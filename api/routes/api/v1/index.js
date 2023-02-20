@@ -22,8 +22,10 @@ router.get('/campaigns', async (req, res) => {
 router.get('/campaigns/:id', async (req, res) => {
   const filter = {_id: req.params.id};
   let campaign = await Campaign.findOne(filter);
-  let donations = Donation.find({campaign_id: req.params.id});
-  campaign.donations = donations;
+  if (campaign) {
+    let donations = Donation.find({campaign_id: req.params.id});
+    campaign.donations = donations;
+  }
   res.json(campaign);
 });
 
