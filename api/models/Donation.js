@@ -3,11 +3,11 @@ const Schema = mongoose.Schema;
 
 const DonationSchema = new Schema({
     campaign_id: {
-        type: String,
+        type: mongoose.ObjectId,
         required: true
     },
     user_id: {
-        type: String,
+        type: mongoose.ObjectId,
         required: true
     },
     message: {

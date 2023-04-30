@@ -20,12 +20,10 @@ router.get('/campaigns', async (req, res) => {
 
 // GET campaign by id
 router.get('/campaigns/:id', async (req, res) => {
-  const filter = {_id: req.params.id};
-  let campaign = await Campaign.findOne(filter);
-  if (campaign) {
-    let donations = Donation.find({campaign_id: req.params.id});
-    campaign.donations = donations;
-  }
+  let campaign = await Campaign.findById(req.params.id);
+  let donations = await Donation.find({campaign_id: req.params.id});
+  campaign = campaign.toObject();
+  campaign.donations = donations;
   res.json(campaign);
 });
 
