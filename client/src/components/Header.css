@@ -1,0 +1,21 @@
+.Header {
+    background-color: #17153a;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    font-size: calc(10px + 2vmin);
+    color: white;
+    padding: 1em;
+    margin-bottom: 1em;
+}
+
+.Header-link {
+    color: #61dafb;
+    padding: 1em;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+}

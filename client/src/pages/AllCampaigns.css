@@ -1,0 +1,9 @@
+.card {
+    min-height: 15em;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
