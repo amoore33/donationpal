@@ -2,10 +2,29 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
+const mongoose = require('mongoose');
+
+const UserModel = require('models/User');
+require('models/Donation');
+const Donation = mongoose.model('donations');
+require('models/Campaign');
+const Campaign = mongoose.model('campaigns');
 
 router.get('/', async (req, res) => {
     res.send('Root users route');
 })
+
+router.get('/:id', async (req, res) => {
+    let user = await UserModel.findById(req.params.id);
+    let donations = await Donation.find({user_id: req.params.id});
+    for (let i = 0; i < donations.length; i++) {
+        donations[i] = donations[i].toObject();
+        donations[i].campaign = await Campaign.findById(donations[i].campaign_id);
+    }
+    user = user.toObject();
+    user.donations = donations;
+    res.json(user);
+});
 
 router.post(
     '/login',

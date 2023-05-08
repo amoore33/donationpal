@@ -19,10 +19,10 @@ const DonationSchema = new Schema({
         type: Number,
         required: true
     },
-    donation_date: {
+    date: {
         type: Date,
         required: true
     }
 });
 
-mongoose.model('donations', DonationSchema);
+module.exports = mongoose.model('donations', DonationSchema);

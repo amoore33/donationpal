@@ -29,13 +29,15 @@ function AllCampaigns() {
             { loading ?
             <span>Loading...</span>
             :
-            <div className="row row-cols-3 g-2">
+            <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
                 { campaigns.map(campaign =>
-                    <div className="col card">
-                        <div className="card-body">
-                            <h3 className="card-title">{campaign.name}</h3>
-                            <p>{campaign.description}</p>
-                            <RouterLink to={`/campaigns/${campaign._id}`} className="card-link App-link">Read more</RouterLink>
+                    <div className="col">
+                        <div className="card h-100">
+                            <div className="card-body">
+                                <h3 className="card-title">{campaign.name}</h3>
+                                <p>{campaign.description}</p>
+                                <RouterLink to={`/campaigns/${campaign._id}`} className="card-link App-link">Read more</RouterLink>
+                            </div>
                         </div>
                     </div>
                 )}

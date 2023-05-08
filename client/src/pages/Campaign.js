@@ -1,18 +1,19 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { APIURLContext } from "contexts/APIURLContext";
 
 function Campaign() {
     let params = useParams();
     const [campaign, setCampaign] = useState({});
     const [donations, setDonations] = useState([]);
     const [loading, setLoading] = useState(false);
-    const url = process.env.REACT_APP_DEV_API_URL;
+    const apiURL = useContext(APIURLContext);
 
     useEffect(() => {
         const loadCampaign = async() => {
             try {
-                const response = await axios.get(`${url}/campaigns/${params.id}`);
+                const response = await axios.get(`${apiURL}/campaigns/${params.id}`);
                 setCampaign(campaign => response.data);
                 setDonations(donations => response.data.donations);
                 setLoading(false);
@@ -41,7 +42,7 @@ function Campaign() {
                 <h3>Donations</h3>
                 <ul className="list-unstyled">
                     {donations.map(donation =>
-                        <li key={donation._id}><strong>{donation.user_id}</strong> <em>donated {donation.amount} on {new Date(donation.donation_date).toDateString()}:</em> "{donation.message}"</li>
+                        <li key={donation._id}><strong>{donation.user?.name.first || "Unknown"} {donation.user?.name.last || "User"}</strong> <em>donated ${donation.amount} on {new Date(donation.date).toDateString()}:</em> "{donation.message}"</li>
                     )}
                 </ul>
             </div>

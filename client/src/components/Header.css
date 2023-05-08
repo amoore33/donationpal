@@ -4,7 +4,8 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    font-size: calc(10px + 2vmin);
+    flex-wrap: wrap;
+    font-size: 1.5em;
     color: white;
     padding: 1em;
     margin-bottom: 1em;
@@ -12,10 +13,10 @@
 
 .Header-link {
     color: #61dafb;
-    padding: 1em;
+    margin: 1em;
 }
 
 nav {
     display: flex;
-    flex-direction: row;
+    text-align: center;
 }
