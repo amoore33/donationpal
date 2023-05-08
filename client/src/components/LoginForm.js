@@ -1,7 +1,7 @@
 import './LoginForm.css';
-import { APIURLContext } from "contexts/APIURLContext";
+import APIURLContext from "contexts/APIURLContext";
 import { useState, useContext } from "react";
-import { useNavigate, Navigate, redirect } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import axios from 'axios';
 import useToken from 'hooks/useToken';
 
@@ -9,7 +9,6 @@ function LoginForm() {
     const [inputs, setInputs] = useState({});
     const apiURL = useContext(APIURLContext);
     const {token, setToken} = useToken();
-    const navigate = useNavigate();
 
     if (token) return(<Navigate replace to="/me"/>);
 

@@ -2,7 +2,7 @@ import { Navigate } from "react-router-dom";
 import useToken from "hooks/useToken";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import { APIURLContext } from "contexts/APIURLContext";
+import APIURLContext from "contexts/APIURLContext";
 
 function ProfilePage() {
     const {token, setToken} = useToken();

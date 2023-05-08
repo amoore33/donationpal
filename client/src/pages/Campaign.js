@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { APIURLContext } from "contexts/APIURLContext";
+import APIURLContext from "contexts/APIURLContext";
 
 function Campaign() {
     let params = useParams();

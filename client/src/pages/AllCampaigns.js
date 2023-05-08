@@ -1,17 +1,18 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import axios from 'axios';
 import './AllCampaigns.css';
+import APIURLContext from 'contexts/APIURLContext';
 
 function AllCampaigns() {
     const [campaigns, setCampaigns] = useState([]);
     const [loading, setLoading] = useState(false);
-    const url = process.env.REACT_APP_DEV_API_URL;
+    const apiURL = useContext(APIURLContext)
 
     useEffect(() => {
         const loadCampaigns = async() => {
             try {
-                const response = await axios.get(`${url}/campaigns`);
+                const response = await axios.get(`${apiURL}/campaigns`);
                 setCampaigns(campaigns => [...response.data]);
                 setLoading(false);
             } catch(err) {
