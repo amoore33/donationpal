@@ -24,6 +24,8 @@ function AllCampaigns() {
         loadCampaigns();
     }, []);
 
+    const progress = campaign => Math.floor(campaign.donations_sum / campaign.goal * 100);
+
     return(
         <div className="container">
             <h2>Campaigns</h2>
@@ -37,7 +39,12 @@ function AllCampaigns() {
                             <div className="card-body">
                                 <h3 className="card-title">{campaign.name}</h3>
                                 <p>{campaign.description}</p>
-                                <RouterLink to={`/campaigns/${campaign._id}`} className="card-link App-link">Read more</RouterLink>
+                                <div>
+                                    <div class="progress mb-2" role="progressbar" aria-label="Basic example" aria-valuenow={progress(campaign)} aria-valuemin="0" aria-valuemax="100" style={{height: "2em"}}>
+                                        <div class="progress-bar progress-bar-striped" style={{width: `${progress(campaign)}%`}}>{progress(campaign)}% Funded</div>
+                                    </div>
+                                    <RouterLink to={`/campaigns/${campaign._id}`} className="card-link App-link">Read more</RouterLink>
+                                </div>
                             </div>
                         </div>
                     </div>
