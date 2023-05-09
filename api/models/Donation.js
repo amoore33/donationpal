@@ -7,12 +7,12 @@ const DonationSchema = new Schema({
         required: true
     },
     user_id: {
-        type: mongoose.ObjectId,
-        required: true
+        type: mongoose.ObjectId
+        // required: true
     },
     message: {
         type: String,
-        required: true,
+        // required: true,
         trim: true
     },
     amount: {
@@ -22,7 +22,8 @@ const DonationSchema = new Schema({
     date: {
         type: Date,
         required: true
-    }
+    },
+    payment_id: String
 });
 
 module.exports = mongoose.model('donations', DonationSchema);

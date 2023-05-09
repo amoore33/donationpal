@@ -50,7 +50,7 @@ function LoginForm() {
                 <input type="password" name="password" required className="form-control w-75"
                     value={inputs.password || ""} onChange={handleChange}/>
             </div>
-            <input type="submit" value="Log In"/>
+            <button type="submit" className="btn btn-primary">Log In</button>
         </form>
     );
 }

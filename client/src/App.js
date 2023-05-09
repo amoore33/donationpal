@@ -5,6 +5,7 @@ import Campaign from 'pages/Campaign';
 import LoginPage from 'pages/LoginPage';
 import LogoutPage from 'pages/LogoutPage';
 import ProfilePage from 'pages/ProfilePage';
+import DonationSuccess from 'pages/DonationSuccess';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path='/login' element={<LoginPage/>} />
           <Route path='/logout' element={<LogoutPage/>} />
           <Route path='/me' element={<ProfilePage/>} />
+          <Route path='/donation_success' element={<DonationSuccess/>}/>
         </Routes>
       </BrowserRouter>
     </div>
